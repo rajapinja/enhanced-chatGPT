@@ -1,0 +1,227 @@
+.modal {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(200, 200, 200);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+.modal, .overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    background: transparent;
+  }
+  
+  .overlay {
+    background: rgba(49,49,49,0.8);
+  } 
+
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    width: 550px;
+    height: 350px;
+    border-radius: 12px;
+    background-color: rgba(17, 14, 14, 0.65);
+    /* box-shadow: rgba(235, 233, 233, 0.35) 0px 5px 15px;     */
+    padding: 25px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;    
+  }
+  
+  .modal-content .modalTitle {
+    display: flex;    
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 5px;
+    align-items: center;
+  }
+  
+  .titleCloseBtn {
+    display: flex;
+    justify-content: flex-end;   
+  }
+  
+  .titleCloseBtn button {
+    background-color: rgb(133, 126, 126);
+    border-radius: 10%;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;    
+  }
+
+  .titleCloseBtn button:hover {
+    background-color: grey;
+    border-radius: 5px;
+  }
+  
+  .modal-content .modalBody {
+    flex: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.7rem;
+    text-align: center;
+  }
+  
+  .modal-content .modalBody textarea{
+    flex: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    text-align: left;
+    scroll-behavior: none;
+    height: 90px; 
+    overflow-y: hidden;    
+    background-color:#40414f;
+    border-radius: 5px;
+    padding-top: 8px;
+    padding-left: 8px;
+    margin-bottom: 2%;
+  }
+
+  .modal-content .modalFooter {
+    flex: 20%;
+    display: flex;
+    justify-content: flex-end;
+    /* align-items: center; */
+  } 
+  
+  .modal-content .modalFooter button {
+    width: 150px;
+    height: 40px;
+    margin-right: 6px;   
+    border-width: 0.5px;
+    /* border-color: #b2b3b4; */
+    /* background-color: rgb(14, 113, 18); */
+    /* box-shadow: rgba(235, 233, 233, 0.35) 0px 5px 15px;     */
+    background-color:#40414f;
+    color: rgb(230, 227, 227);
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 3%;  
+    border: 0.3px solid silver;  
+  }
+
+.modalSVG{    
+    display: inline-flex;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: rgba(193, 244, 192, 0.75);   
+    justify-content: center;   
+    padding-top: 7px; 
+    margin-bottom: 4%;
+  }
+
+  .title{
+    display: inline-flex;
+    text-align: center;
+    margin-left: 5%;
+    margin-bottom: 4%;
+    color:rgb(195, 197, 200);
+  }
+
+  .modaldownSVG{    
+    display: inline-flex;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: rgba(231, 188, 177, 0.75);   
+    justify-content: center;   
+    padding-top: 7px; 
+    margin-bottom: 4%;
+  }
+
+  .modalCheckbox{
+    display: block;       
+  }
+
+  input[type='checkbox'] {
+    width: 17px;
+    height: 17px;
+    accent-color: rgb(10, 49, 177);   
+    border-radius: 10px;    
+}
+  
+label {  
+  color:aliceblue;
+  font-weight: none;
+  word-spacing: normal;
+}
+  /* .modalCheckbox .checkbox input:checked {
+    border-color: rgb(205, 197, 197);
+    background-color:rgb(6, 40, 114);
+} */
+
+.modalEdit {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(200, 200, 200);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.modalEditContent { 
+  justify-content: right;  
+   
+}
+
+.modalEditContent textarea {   
+  margin-right: 85%;  
+  background-color: #343541;
+  margin-top: 6.5%;  
+  cursor: pointer;
+  color: white;
+  border: transparent;
+  resize: none;
+  border-color: #343541;
+  width: auto;
+}
+
+.modalFooterEdit {
+  display: flex;  
+}
+
+.modalEditContent .modalFooterEdit button {
+  width: 130px;
+  height: 40px;
+  margin-right: 6px;   
+  border-width: 0.5px;  
+  background-color:#0da37f;
+  color: rgb(230, 227, 227);
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 10%;    
+  border: 0.3px solid silver; 
+  justify-content: center;
+  z-index: 1;
+}
+
+#cancelBtn {
+  width: 70px;
+  background-color: #444654;
+  /* background-color: rgb(132, 19, 41); */
+  color: rgb(230, 227, 227);  
+}
+
+
+
+
+  
