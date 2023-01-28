@@ -6,6 +6,8 @@ import './normal.css';
 import Modal from './Component/Modal';
 import ModalDown from './Component/ModalDown';
 import ModalEdit from './Component/EditModal';
+
+const GPT_ENHANCED_URL="https://rajapinja.github.io/enhanced-chatGPT/"
   
 function App() {
 
@@ -36,7 +38,8 @@ function App() {
       setChatLog(chatLogNew);
 
       const messages =  chatLogNew.map((message) => message.message).join("\n");
-      const response = await fetch("http://localhost:3001/", {
+      //const response = await fetch("http://localhost:3001/", {
+      const response = await fetch(GPT_ENHANCED_URL, {
         method:"POST",
         headers:{
           "content-Type":"application/json"
@@ -55,7 +58,7 @@ function App() {
 
     //To get chatGPT models or engine models
     async function getEngineModels(){
-      const response = await fetch("http://localhost:3001/models/", {
+      const response = await fetch(GPT_ENHANCED_URL, {
         method:"GET",
         headers:{
           "content-Type":"application/json"
@@ -69,7 +72,7 @@ function App() {
 
     //To get AI generated Image for given question/prompt
     async function getImage(){
-      const response = await fetch("http://localhost:3001/createImage", {
+      const response = await fetch(GPT_ENHANCED_URL, {
         method:"GET"
       }).then((response)  => response.json())
       .then((data) => {       
