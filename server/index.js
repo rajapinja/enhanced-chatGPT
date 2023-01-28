@@ -14,7 +14,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: "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",
+  
   //apiKey:process.env.OPENAI_API_KEY1,
 });
 const openai = new OpenAIApi(configuration);
