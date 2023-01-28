@@ -7,19 +7,15 @@ import cookieParser from "cookie-parser";
 const app = express();
 app.use(cookieParser());
 app.use(cors({
-    origin:'http://localhost:3000'   
+    origin:'https://rajapinja.github.io/enhanced-chatGPT/'   
 }));
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-
 const configuration = new Configuration({
   apiKey: "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",
-  
-  //apiKey:process.env.OPENAI_API_KEY1,
 });
 const openai = new OpenAIApi(configuration);
-
 
 //console.log(response.data.choices[0].text);
 
