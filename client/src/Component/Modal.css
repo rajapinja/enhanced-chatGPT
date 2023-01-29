@@ -189,9 +189,10 @@ label {
   cursor: pointer;
   color: white;
   border: transparent;
-  resize: none;
+  resize:horizontal;
   border-color: #343541;
-  width: auto;
+  justify-content: stretch;  
+ 
 }
 
 .modalFooterEdit {

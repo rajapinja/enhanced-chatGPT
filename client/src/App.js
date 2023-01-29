@@ -7,9 +7,12 @@ import Modal from './Component/Modal';
 import ModalDown from './Component/ModalDown';
 import ModalEdit from './Component/EditModal';
 
-const REACT_APP_GPT_ENHANCED_URL="https://rajapinja.github.io/enhanced-chatGPT/"
+//const REACT_APP_GPT_ENHANCED_URL="https://rajapinja.github.io/enhanced-chatGPT/";
+
   
 function App() {
+
+  const REACT_APP_GPT_ENHANCED_URL="http://localhost:3001/";
 
     const [input, setInput] = useState("");
     const [chatLog, setChatLog] = useState([{
@@ -38,11 +41,11 @@ function App() {
       setChatLog(chatLogNew);
 
       const messages =  chatLogNew.map((message) => message.message).join("\n");
-      //const response = await fetch("http://localhost:3001/", {
-      const response = await fetch(REACT_APP_GPT_ENHANCED_URL, {
+      const response = await fetch("http://localhost:3001/", {
+      //const response = await fetch(REACT_APP_GPT_ENHANCED_URL, {
         method:"POST",
         headers:{
-          "content-Type":"application/json"
+          "content-Type":"application/json"         
         },
         body:JSON.stringify(
           {
@@ -58,7 +61,8 @@ function App() {
 
     //To get chatGPT models or engine models
     async function getEngineModels(){
-      const response = await fetch(REACT_APP_GPT_ENHANCED_URL, {
+      //const response = await fetch(REACT_APP_GPT_ENHANCED_URL, {
+      const response = await fetch("http://localhost:3001/models/", {
         method:"GET",
         headers:{
           "content-Type":"application/json"
@@ -72,7 +76,7 @@ function App() {
 
     //To get AI generated Image for given question/prompt
     async function getImage(){
-      const response = await fetch(REACT_APP_GPT_ENHANCED_URL, {
+      const response = await fetch("http://localhost:3001/createImage/", {
         method:"GET"
       }).then((response)  => response.json())
       .then((data) => {       
