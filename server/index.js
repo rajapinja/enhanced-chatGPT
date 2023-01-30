@@ -3,6 +3,7 @@ import express, { response }   from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import {} from "dotenv/config";
 
 const app = express();
 app.use(cookieParser());
@@ -11,8 +12,10 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
+console.log(process.env.OPENAI_API_KEY, "ApiKey")
 const configuration = new Configuration({
-   apiKey:"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",
+    organization: process.env.ORGANIZATION_ID,
+    apiKey:process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
