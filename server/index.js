@@ -14,8 +14,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 console.log(process.env.OPENAI_API_KEY, "ApiKey")
 const configuration = new Configuration({
-    organization: process.env.ORGANIZATION_ID,
-    apiKey:process.env.OPENAI_API_KEY,
+   apiKey:"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",
 });
 const openai = new OpenAIApi(configuration);
 
