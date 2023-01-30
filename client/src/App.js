@@ -44,7 +44,7 @@ function App() {
 
       const messages =  chatLogNew.map((chatlog) => chatlog.message).join("\n");
       console.log(messages);
-      const response = await fetch("http://localhost:3002/", {      
+      const response = await fetch("http://localhost:3001/", {      
         method:"POST",
         //mode:"same-origin",
         headers:{
@@ -65,7 +65,7 @@ function App() {
     //To get chatGPT models or engine models - //mode: 'no-cors',
     async function getEngineModels(){
       console.log("Inside getEngineModels()......(1)")
-        const response = await fetch("http://localhost:3002/models", {
+        const response = await fetch("http://localhost:3001/models", {
         method:"GET",        
         headers:{          
           "content-Type":"application/json"
@@ -83,7 +83,7 @@ function App() {
 
     //To get AI generated Image for given question/prompt
     async function getImage(){
-      const response = await fetch("http://localhost:3002/", {
+      const response = await fetch("http://localhost:3001/", {
         method:"GET"
       }).then((response)  => response.json())
       .then((data) => {       
