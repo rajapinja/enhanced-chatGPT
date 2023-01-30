@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
 const configuration = new Configuration({
-   apiKey:"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",
+   apiKey:"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",
 });
 const openai = new OpenAIApi(configuration);
 
