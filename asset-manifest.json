@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/enhanced_chatGPT/static/css/main.eb11a971.css",
-    "main.js": "/enhanced_chatGPT/static/js/main.c5b74ef5.js",
+    "main.js": "/enhanced_chatGPT/static/js/main.5dcc3eab.js",
     "static/js/787.c4e7f8f9.chunk.js": "/enhanced_chatGPT/static/js/787.c4e7f8f9.chunk.js",
     "index.html": "/enhanced_chatGPT/index.html",
     "main.eb11a971.css.map": "/enhanced_chatGPT/static/css/main.eb11a971.css.map",
-    "main.c5b74ef5.js.map": "/enhanced_chatGPT/static/js/main.c5b74ef5.js.map",
+    "main.5dcc3eab.js.map": "/enhanced_chatGPT/static/js/main.5dcc3eab.js.map",
     "787.c4e7f8f9.chunk.js.map": "/enhanced_chatGPT/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.eb11a971.css",
-    "static/js/main.c5b74ef5.js"
+    "static/js/main.5dcc3eab.js"
   ]
 }
