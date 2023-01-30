@@ -1,66 +1,51 @@
 import { Configuration, OpenAIApi } from "openai";
-import express   from "express";
+import express, { response }   from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
 const app = express();
 app.use(cookieParser());
-app.use(cors({
-    origin:'https://rajapinja.github.io/enhanced-chatGPT/'   
-}));
+app.use(cors());
+
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
 const configuration = new Configuration({
-  apiKey: "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",
+   apiKey:"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",
 });
 const openai = new OpenAIApi(configuration);
 
-//console.log(response.data.choices[0].text);
-
-// const response =await openai.listModels();
-// let listmodels = response.data.data;
-//console.log(listmodels);
-//listmodels.forEach(data => {
- // console.log(`${data.id}`)
-  //for (let key in data) {
-    //console.log(`${data[key]}`)
-    //console.log(`${key}: ${data[key]}`)
-  //}
-//})
-
 //Post a question or prompt and get AI answered
 app.post('/', async (req, res) =>{
-
-  const { message, model } = req.body;
-  console.log(message, "message");
-  console.log(model, "model");
+  const { message } = req.body;
+  console.log(message);
+  //console.log(model, "model");
   const response = await openai.createCompletion({
-    model: `${model}`,//"text-davinci-003",
-    prompt: `${message}`,
+    model: "text-davinci-003",
+    prompt: `${message}`, //"Pretend like Elon Musk?",//,
     max_tokens : 100,
     temperature: 0.5
-  });
-  
+  });  
   console.log(response.data.choices[0].text);
   let gptMessage = response.data.choices[0].text;
-  return res.json(gptMessage); 
+  return res.json({message:gptMessage}); 
 });
 
 //To get list of OpenAI Engine models
 app.get('/models', async (req, res) =>{
+  console.log("Inside models API....")
   const response = await openai.listModels();
-  let listmodels = response.data.data;
-  console.log(listmodels);
-  return res.json({models:listmodels});
+  //const response = await openai.listEngines().then((response)=>(response.data.data));
+  //let listmodels = response.data.data;
+  console.log(response);
+  //return res.json({models:listmodels});
+  return res.json(response.data);
 });
 
 //Create an image
 app.get('/createImage', async(req, res)=>{
-
   //const { message} = req.body;
-
   const response = await openai.createImage({
     prompt: "A cute baby sea otter",
     n: 1, // no of images to be retrieved
@@ -69,19 +54,9 @@ app.get('/createImage', async(req, res)=>{
 
   console.log(response.data);
   let gptImages = response.data;
-  return res.json({urls:gptImages}); 
-
+  return res.json({urls:gptImages});
 })
-
-//const response2 = await openai.retrieveModel("text-davinci-003");
-//console.log("Retrieves AI models belwo...:");
-
 //console.log(response2.data);
 app.listen(3001, () =>{
   console.log("I'm running on port "+3001)
 })
-
-/**app.listen(process.env.PORT, () =>{
-  let PORT = process.env.PORT;
-  console.log("I'm running on port "+PORT)
-})*/
