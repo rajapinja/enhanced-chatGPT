@@ -7,12 +7,12 @@ import Modal from './Component/Modal';
 import ModalDown from './Component/ModalDown';
 import ModalEdit from './Component/EditModal';
 
-//const REACT_APP_GPT_ENHANCED_URL="https://rajapinja.github.io/enhanced-chatGPT/";
-
   
 function App() {
 
-  const REACT_APP_GPT_ENHANCED_URL="http://localhost:3001/";
+  const BASE_URL =" http://localhost:3002";
+
+  const REACT_APP_GPT_ENHANCED_URL="/api/gptResponse/";
 
     const [input, setInput] = useState("");
     const [chatLog, setChatLog] = useState([{
@@ -30,53 +30,60 @@ function App() {
   
     // useEffect
     useEffect(() => {
+      console.log("Inside useEffect before getEngineModels()......(1)")
       getEngineModels();
+      console.log("Inside useEffect after getEngineModels()......(2)")
     }, []);
 
     //To get chatGPT completion/response for give question/prompt
-    async function handleSubmit(e){
+     async function handleSubmit(e){
       e.preventDefault();
       let chatLogNew = [...chatLog, {user:"me", message: `${input}`}];
       setInput("");
       setChatLog(chatLogNew);
 
-      const messages =  chatLogNew.map((message) => message.message).join("\n");
-      const response = await fetch("http://localhost:3001/", {
-      //const response = await fetch(REACT_APP_GPT_ENHANCED_URL, {
+      const messages =  chatLogNew.map((chatlog) => chatlog.message).join("\n");
+      console.log(messages);
+      const response = await fetch("http://localhost:3002/", {      
         method:"POST",
+        //mode:"same-origin",
         headers:{
-          "content-Type":"application/json"         
+          //'Access-Control-Allow-Origin':'http://localhost:3002/',
+          "content-Type":"application/json"            
         },
-        body:JSON.stringify(
-          {
-            message: messages,
-            model:currentModel
+        body:JSON.stringify({
+          message:`${input}`
         })
       }).then((response)  => response.json())
       .then((message) => {
-        setChatLog([...chatLogNew, {user: "gpt", message:`${message}`}]); 
-        console.log(message);
-      });   
-    }      
+        setChatLog([...chatLogNew, {user: "gpt", message:`${message.message}`}]);  
+        console.log(message.message);
+      })
+      .then(console.error());   
+     }      
 
-    //To get chatGPT models or engine models
+    //To get chatGPT models or engine models - //mode: 'no-cors',
     async function getEngineModels(){
-      //const response = await fetch(REACT_APP_GPT_ENHANCED_URL, {
-      const response = await fetch("http://localhost:3001/models/", {
-        method:"GET",
-        headers:{
+      console.log("Inside getEngineModels()......(1)")
+        const response = await fetch("http://localhost:3002/models", {
+        method:"GET",        
+        headers:{          
           "content-Type":"application/json"
         }
       }).then((response)  => response.json())
+      // .then((models) => {
+      //   console.log(data.models);
+      //   setModels(data.models);
       .then((data) => {
-        console.log(data);
-        setModels(data.models);
-      }); 
+        console.log("Inside getEngineModels()......(2)")
+          console.log(data.data);
+          setModels(data.data);
+      }).then(console.error()); 
     }
 
     //To get AI generated Image for given question/prompt
     async function getImage(){
-      const response = await fetch("http://localhost:3001/createImage/", {
+      const response = await fetch("http://localhost:3002/", {
         method:"GET"
       }).then((response)  => response.json())
       .then((data) => {       
@@ -234,5 +241,4 @@ const ChatMessage = ({message}) =>{
     </div>
   )
 }
-
 export default App;
